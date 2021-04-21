@@ -4,10 +4,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f632890e0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <div class="main-container">
+        <div class="title">Todo:</div>
+        <div class="todo-items todo">
+            <div class="todo-item">
+                <div class="todo-item-title">Create TODO list</div>
+                <div class=" todo-item-icons">
+                    <i class="fas fa-pen"></i>
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+            </div>
+            <div class="btn" id="addTodo">Add TODO</div>
+        </div>
+        <div class="title">Done:</div>
+        <div class="todo-items done"></div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>

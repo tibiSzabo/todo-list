@@ -1,0 +1,123 @@
+body {
+  background-color: #F2F3D9;
+  font-family: 'Original Surfer', cursive;
+}
+
+.main-container {
+  margin: 50px 15%;
+  background-color: red;
+  min-height: 80%;
+  background-color: #C16E70;
+  border-radius: 30px;
+  -webkit-box-shadow: 15px 15px 4px 0px black;
+          box-shadow: 15px 15px 4px 0px black;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px;
+  font-size: 1.5rem;
+  color: #F2F3D9;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid;
+}
+
+.todo-items.todo {
+  min-height: 40%;
+}
+
+.todo-item {
+  padding: 15px 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1.75rem;
+  color: #F2F3D9;
+}
+
+.todo-item .todo-item-title::before {
+  content: '';
+  height: 2.5;
+  width: 10px;
+  position: relative;
+  left: -11px;
+  top: -8px;
+  background-color: #F2F3D9;
+  display: inline-block;
+}
+
+.todo-item .todo-item-icons {
+  font-size: 1.25rem;
+}
+
+.todo-item .todo-item-icons i {
+  cursor: pointer;
+}
+
+.todo-item .todo-item-icons i:hover {
+  color: #DC9E82;
+}
+
+.todo-item .todo-item-icons i:not(:last-child) {
+  margin-right: 10px;
+}
+
+.btn {
+  height: 35px;
+  width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #F2F3D9;
+  color: #C16E70;
+  margin: 15px auto;
+  font-weight: bold;
+  font-size: 1.25rem;
+  -webkit-box-shadow: 4px 4px black;
+          box-shadow: 4px 4px black;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.btn:hover {
+  background-color: #DC9E82;
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main-container {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */

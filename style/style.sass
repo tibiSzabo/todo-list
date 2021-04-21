@@ -1,0 +1,84 @@
+$primary-color: #F2F3D9
+$secondary-color: #DC9E82
+$tertiary-color: #C16E70
+
+body
+    background-color: $primary-color
+    font-family: 'Original Surfer', cursive
+
+.main-container
+    margin: 50px 15%
+    background-color: red
+    min-height: 80%
+    background-color: $tertiary-color
+    border-radius: 30px
+    box-shadow: 15px 15px 4px 0px black
+
+.title
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 15px
+    font-size: 1.5rem
+    color: $primary-color
+    margin-left: auto
+    margin-right: auto
+    border-bottom: 1px solid
+
+.todo-items
+
+    &.todo
+        min-height: 40%
+
+.todo-item
+    padding: 15px 60px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    font-size: 1.75rem
+    color: $primary-color
+    & .todo-item-title
+        &::before
+            content: ''
+            height: 2.5
+            width: 10px
+            position: relative
+            left: -11px
+            top: -8px
+            background-color: #F2F3D9
+            display: inline-block
+    & .todo-item-icons
+        font-size: 1.25rem
+        & i
+            cursor: pointer
+            &:hover
+                color: $secondary-color
+            &:not(:last-child)
+                margin-right: 10px
+
+.btn
+    height: 35px
+    width: 150px
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: $primary-color
+    color: $tertiary-color
+    margin: 15px auto
+    font-weight: bold
+    font-size: 1.25rem
+    box-shadow: 4px 4px black
+    border-radius: 5px
+    cursor: pointer
+    user-select: none
+    &:hover
+        background-color: $secondary-color
+
+@media screen and ( max-width: 768px )
+    .main-container
+        margin: 0 30px
+
+@media screen and ( max-width: 450px )
+    .main-container
+        margin: 0
+        border-radius: 0
