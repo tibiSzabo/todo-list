@@ -63,10 +63,12 @@ body {
 
 .todo-item .todo-item-icons {
   font-size: 1.25rem;
+  margin-left: 15px;
 }
 
 .todo-item .todo-item-icons i {
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .todo-item .todo-item-icons i:hover {
@@ -118,6 +120,10 @@ body {
   .main-container {
     margin: 0;
     border-radius: 0;
+    height: 100%;
+  }
+  .todo-item {
+    padding: 15px 15px;
   }
 }
 /*# sourceMappingURL=style.css.map */
