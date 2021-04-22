@@ -3,6 +3,10 @@ body {
   font-family: 'Original Surfer', cursive;
 }
 
+.hidden {
+  display: none;
+}
+
 .main-container {
   margin: 50px 15%;
   background-color: red;
@@ -31,7 +35,7 @@ body {
   border-bottom: 1px solid;
 }
 
-.todo-items.todo {
+.sub-container.todo {
   min-height: 40%;
 }
 
@@ -136,6 +140,11 @@ body {
 
 .btn:hover {
   background-color: #DC9E82;
+}
+
+.error-message {
+  padding: 5px;
+  color: #F2F3D9;
 }
 
 @media screen and (max-width: 768px) {

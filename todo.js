@@ -1,13 +1,13 @@
-export class TodoItem {
+class TodoItem {
 
-    constructor(title) {
+    constructor(title, done = false) {
         this.title = title;
-        this.done = false;
+        this.done = done;
     }
 
-    get title() { return this.title; }
+    get title() { return this._title; }
 
-    set title(newTitle) { this.title = newTitle; }
+    set title(newTitle) { this._title = newTitle; }
 
     toggleStatus() { this.done = !this.done; }
 

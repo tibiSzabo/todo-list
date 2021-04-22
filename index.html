@@ -12,24 +12,42 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="title">Todo:</div>
-        <div class="todo-items todo">
-            <div class="todo-item">
-                <div class="todo-item-title">Create TODO list</div>
-                <div class=" todo-item-icons">
-                    <i class="fas fa-pen" id="editTodo"></i>
-                    <i class="fas fa-trash-alt" id="deleteTodo"></i>
-                    <i class="fas fa-check-square done-icon" id="doneTodo"></i>
+        <div class="sub-container todo">
+
+            <div class="title">Todo:</div>
+
+            <div class="todo-list">
+                <div class="todo-item">
+                    <div class="todo-item-title">Create TODO list</div>
+                    <div class=" todo-item-icons">
+                        <i class="fas fa-pen" id="editTodo"></i>
+                        <i class="fas fa-trash-alt" id="deleteTodo"></i>
+                        <i class="fas fa-check-square done-icon" id="doneTodo"></i>
+                    </div>
                 </div>
             </div>
-            <div class="todo-input">
+
+            <div class="todo-input hidden">
                 <input type="text" id="addTodoInput">
+                <div class="error-message hidden" id="todoExistsError">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Todo with this title already exists!</span>
+                </div>
+                <div class="error-message hidden" id="todoInvalidError">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Invalid title! (min. 2 characters)</span>
+                </div>
             </div>
+
             <div class="btn" id="addTodo">Add TODO</div>
+
         </div>
-        <div class="title">Done:</div>
-        <div class="todo-items done"></div>
+
+        <div class="sub-container done">
+            <div class="title">Done:</div>
+        </div>
     </div>
+    <script src="todo.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

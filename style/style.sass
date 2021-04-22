@@ -6,6 +6,9 @@ body
     background-color: $primary-color
     font-family: 'Original Surfer', cursive
 
+.hidden
+    display: none
+
 .main-container
     margin: 50px 15%
     background-color: red
@@ -25,7 +28,7 @@ body
     margin-right: auto
     border-bottom: 1px solid
 
-.todo-items
+.sub-container
 
     &.todo
         min-height: 40%
@@ -92,6 +95,10 @@ body
     user-select: none
     &:hover
         background-color: $secondary-color
+
+.error-message
+    padding: 5px
+    color: $primary-color
 
 @media screen and ( max-width: 768px )
     .main-container
