@@ -90,6 +90,23 @@ body {
   margin-top: 2px;
 }
 
+.todo-input {
+  padding: 15px 60px;
+}
+
+.todo-input input {
+  height: 35px;
+  min-width: 250px;
+  font-family: 'Original Surfer', cursive;
+  font-size: 1.75rem;
+  background-color: #F2F3D9;
+  color: #C16E70;
+}
+
+.todo-input input:focus {
+  outline: none;
+}
+
 .btn {
   height: 35px;
   width: 150px;
