@@ -8,6 +8,7 @@ const todoContainer = document.querySelector('.sub-container.todo .todo-list');
 const todoDoneContainer = document.querySelector('.sub-container.done .todo-list');
 
 const todoInputVisible = visible => {
+    console.log(todoList);
     if (visible) {
         todoInputContainer.classList.remove('hidden');
         todoInput.focus();
@@ -39,6 +40,7 @@ const getTodoMarkup = todoItem => {
         <i class="fas fa-trash-alt" id="deleteTodo"></i>
         <i class="fas fa-check-square done-icon" id="doneTodo"></i>
     </div>`
+    addTodoItemEventListener(div);
     return div;
 };
 
@@ -91,11 +93,33 @@ const initFromStorage = () => {
     }
 }
 
+const deleteTodo = title => {
+    todoList = todoList.filter(item => item.title !== title);
+    saveToLocalStorage();
+}
+
+function addTodoItemEventListener(todoItemElement) {
+    const todoItemTitle = todoItemElement.childNodes[0].innerHTML;
+    todoItemElement.addEventListener('click', function(event) {
+        if (event.target.id === 'editTodo') {
+            // TODO
+        } else if (event.target.id === 'deleteTodo') {
+            this.remove();
+            deleteTodo(todoItemTitle);
+        } else if (event.target.id === 'doneTodo') {
+            // TODO
+        }
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function(){
 
     initFromStorage();
 
     addTodoButton.addEventListener('click', () => todoInputVisible(true));
+    document
+        .querySelectorAll('.sub-container.todo .todo-item')
+        .forEach(todoItem => addTodoItemEventListener(todoItem));
 
     todoInput.addEventListener('keyup', event => {
         if (event.code === 'Escape') {
