@@ -25,15 +25,16 @@ const saveTodo = title => {
     saveToLocalStorage();
 }
 
-const displayTodo = (todoItem, container = todoContainer) => {
-    container.append(getTodoMarkup(todoItem));
+const displayTodo = todoItem => {
+    const container = todoItem.done ? todoDoneContainer : todoContainer;
+    container.append(todoItem.done ? getTodoDoneMarkup(todoItem.title) : getTodoMarkup(todoItem.title));
 }
 
-const getTodoMarkup = todoItem => {
+const getTodoMarkup = title => {
     const div = document.createElement('div');
     div.classList.add('todo-item');
     div.innerHTML =
-    `<div class="todo-item-title">${todoItem.title}</div>
+    `<div class="todo-item-title">${title}</div>
     <div class=" todo-item-icons">
         <i class="fas fa-pen" id="editTodo"></i>
         <i class="fas fa-trash-alt" id="deleteTodo"></i>
@@ -42,6 +43,18 @@ const getTodoMarkup = todoItem => {
     addTodoItemEventListener(div);
     return div;
 };
+
+const getTodoDoneMarkup = title => {
+    const div = document.createElement('div');
+    div.classList.add('todo-item');
+    div.innerHTML =
+    `<div class="todo-item-title">${title}</div>
+    <div class=" todo-item-icons">
+        <i class="fas fa-trash-alt" id="deleteTodo"></i>
+        <i class="fas fa-clipboard" id="undoneTodo"></i>
+    </div>`
+    return div;
+}
 
 const todoTitleValid = title => title.trim().length >= 2
 
@@ -97,6 +110,13 @@ const deleteTodo = title => {
     saveToLocalStorage();
 }
 
+const doneTodo = title => {
+    const todo = todoList.find(item => item.title === title);
+    todo.toggleStatus();
+    displayTodo(todo);
+    saveToLocalStorage();
+}
+
 function addTodoItemEventListener(todoItemElement) {
     const todoItemTitle = todoItemElement.childNodes[0].innerHTML;
     todoItemElement.addEventListener('click', function(event) {
@@ -106,7 +126,8 @@ function addTodoItemEventListener(todoItemElement) {
             this.remove();
             deleteTodo(todoItemTitle);
         } else if (event.target.id === 'doneTodo') {
-            // TODO
+            this.remove();
+            doneTodo(todoItemTitle);
         }
     })
 }
