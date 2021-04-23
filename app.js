@@ -40,7 +40,7 @@ const getTodoMarkup = title => {
         <i class="fas fa-trash-alt" id="deleteTodo"></i>
         <i class="fas fa-check-square done-icon" id="doneTodo"></i>
     </div>`
-    addTodoItemEventListener(div);
+    addTodoItemEventListeners(div);
     return div;
 };
 
@@ -53,6 +53,7 @@ const getTodoDoneMarkup = title => {
         <i class="fas fa-trash-alt" id="deleteTodo"></i>
         <i class="fas fa-clipboard" id="undoneTodo"></i>
     </div>`
+    addTodoItemEventListeners(div);
     return div;
 }
 
@@ -66,12 +67,13 @@ const validateTodo = title => {
     if (todoTitleValid(title)) {
         if (todoExists(title)) {
             todoExistsErrorVisible(true);
-        } else {
-            saveTodo(title);
+            return false;
         }
     } else {
         todoInvalidErrorVisible(true);
+        return false;
     }
+    return true;
 }
 
 const todoExistsErrorVisible = visible => {
@@ -117,17 +119,50 @@ const doneTodo = title => {
     saveToLocalStorage();
 }
 
-function addTodoItemEventListener(todoItemElement) {
+const renameTodo = (oldName, newName) => {
+    todoList.find(i => i.title === oldName).title = newName;
+    saveToLocalStorage();
+};
+
+const switchTitleWithInput = todoEl => {
+    const previousTitle = todoEl.children[0].innerHTML;
+    todoEl.firstChild.innerHTML = `<input type="text">`;
+    const inputEl = todoEl.firstChild.children[0];
+    inputEl.value = previousTitle;
+    inputEl.focus();
+    addEditInputEventListener(inputEl, previousTitle);
+}
+
+const addEditInputEventListener = (inputEl, previousTitle) => {
+    inputEl.addEventListener('keyup', function(event) {
+        if (event.code === 'Escape') {
+            inputEl.remove();
+            event.path[1].innerHTML = previousTitle;
+        } else if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+            if (validateTodo(inputEl.value)) {
+                renameTodo(previousTitle, inputEl.value);
+                event.path[1].innerHTML = inputEl.value;
+                inputEl.remove();
+            }
+        }
+    });
+} 
+
+function addTodoItemEventListeners(todoItemElement) {
     const todoItemTitle = todoItemElement.childNodes[0].innerHTML;
     todoItemElement.addEventListener('click', function(event) {
         if (event.target.id === 'editTodo') {
-            // TODO
+            switchTitleWithInput(this);
         } else if (event.target.id === 'deleteTodo') {
             this.remove();
             deleteTodo(todoItemTitle);
         } else if (event.target.id === 'doneTodo') {
             this.remove();
             doneTodo(todoItemTitle);
+        } else if (event.target.id === 'undoneTodo') {
+            this.remove();
+            deleteTodo(todoItemTitle);
+            saveTodo(todoItemTitle);
         }
     })
 }
@@ -137,15 +172,14 @@ document.addEventListener('DOMContentLoaded', function(){
     initFromStorage();
 
     addTodoButton.addEventListener('click', () => todoInputVisible(true));
-    document
-        .querySelectorAll('.sub-container.todo .todo-item')
-        .forEach(todoItem => addTodoItemEventListener(todoItem));
 
     todoInput.addEventListener('keyup', event => {
         if (event.code === 'Escape') {
             todoInputVisible(false);
         } else if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-            validateTodo(todoInput.value);
+            if (validateTodo(todoInput.value)) {
+                saveTodo(todoInput.value);
+            }
         }
     });
 

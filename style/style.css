@@ -98,7 +98,7 @@ body {
   padding: 15px 60px;
 }
 
-.todo-input input {
+input {
   height: 35px;
   min-width: 250px;
   font-family: 'Original Surfer', cursive;
@@ -107,7 +107,7 @@ body {
   color: #C16E70;
 }
 
-.todo-input input:focus {
+input:focus {
   outline: none;
 }
 
@@ -140,6 +140,15 @@ body {
 
 .btn:hover {
   background-color: #DC9E82;
+}
+
+.error-message-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .error-message {
