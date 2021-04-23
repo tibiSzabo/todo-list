@@ -8,7 +8,6 @@ const todoContainer = document.querySelector('.sub-container.todo .todo-list');
 const todoDoneContainer = document.querySelector('.sub-container.done .todo-list');
 
 const todoInputVisible = visible => {
-    console.log(todoList);
     if (visible) {
         todoInputContainer.classList.remove('hidden');
         todoInput.focus();
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function(){
     todoInput.addEventListener('keyup', event => {
         if (event.code === 'Escape') {
             todoInputVisible(false);
-        } else if (event.code === 'Enter') {
+        } else if (event.code === 'Enter' || event.code === 'NumpadEnter') {
             validateTodo(todoInput.value);
         }
     });
