@@ -35,8 +35,19 @@ body {
   border-bottom: 1px solid;
 }
 
-.sub-container.todo {
-  min-height: 40%;
+.sub-container.todo .todo-list {
+  min-height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sub-container.done .todo-list {
+  min-height: 150px;
 }
 
 .todo-item {
@@ -52,17 +63,6 @@ body {
           justify-content: space-between;
   font-size: 1.75rem;
   color: #F2F3D9;
-}
-
-.todo-item .todo-item-title::before {
-  content: '';
-  height: 2.5;
-  width: 10px;
-  position: relative;
-  left: -11px;
-  top: -8px;
-  background-color: #F2F3D9;
-  display: inline-block;
 }
 
 .todo-item .todo-item-icons {

@@ -29,9 +29,12 @@ body
     border-bottom: 1px solid
 
 .sub-container
-
-    &.todo
-        min-height: 40%
+    &.todo .todo-list
+        min-height: 150px
+        display: flex
+        flex-direction: column
+    &.done .todo-list
+        min-height: 150px
         
 .todo-item
     padding: 15px 60px
@@ -40,16 +43,16 @@ body
     justify-content: space-between
     font-size: 1.75rem
     color: $primary-color
-    & .todo-item-title
-        &::before
-            content: ''
-            height: 2.5
-            width: 10px
-            position: relative
-            left: -11px
-            top: -8px
-            background-color: #F2F3D9
-            display: inline-block
+    // & .todo-item-title
+    //     &::before
+    //         content: ''
+    //         height: 2.5
+    //         width: 10px
+    //         position: relative
+    //         left: -11px
+    //         top: -8px
+    //         background-color: #F2F3D9
+    //         display: inline-block
     & .todo-item-icons
         font-size: 1.25rem
         margin-left: 15px
